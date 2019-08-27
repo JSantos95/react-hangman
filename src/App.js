@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       movieList: [],
       movieTitle: '',
-      guess: '',
+      guess: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -26,17 +26,34 @@ class App extends React.Component {
 
   handleClick(){
     const rand = Math.floor(Math.random() * this.state.movieList.length);
-    const randMovie = this.state.movieList[rand];
-    this.setState({movieTitle: randMovie.title})
+    const randMovie = this.state.movieList[rand].title;
+    var blank = "";
+    const isLetter = /^[A-Za-z]+$/;
+
+    for(let i = 0; i < randMovie.length; i++){
+      if(randMovie[i].match(isLetter)){
+        blank += "_ ";
+      }else if(randMovie[i] === " "){
+        blank += "|";
+      }else{
+        blank += randMovie[i];
+      }
+    }
+    this.setState({
+      movieTitle: randMovie,
+      guess: blank.split("|")
+    })
   }
 
   render(){
+    const phrase = this.state.guess.map((x) => <Title key={x.index} text={x}/>);
+
     return (
       <div className="App">
           <h1>Movie Hangman</h1>
           <button onClick={this.handleClick} >Start New Game</button>
           <h3>{this.state.movieTitle}</h3>
-          <Title />
+          {phrase}
           <Letters />
           <Man />
       </div>
