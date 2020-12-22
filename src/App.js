@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './css/App.css';
-import './components/Game';
+import Game from './components/Game';
 
 const App = () => {
 
@@ -9,12 +9,11 @@ const App = () => {
   return (
     <div>
       <h1>Hangman Movie Title Game!</h1>
-      {!gameStart && 
+      {gameStart?  
+        <Game /> :
         <button onClick={() => setStart(true)}>Start Game</button>
       }
-      {gameStart && 
-        <Game />
-      }
+      
     </div>
   );
 }
