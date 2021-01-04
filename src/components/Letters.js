@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Man from './Man';
 
 const Letters = (props) => {
 
-  const regex = /[a-zA-Z]/; //will be use to test if a part of the title is a letter
-  const titleBox = props.title.split(''); //title split by every index
+  const titleBox = props.title.split('');
 
-  const [guessBox, setGuessBox] = useState(props.title.split('').map(x => {
-    if (regex.test(x)) {
-      return '-';
-    } else {
-      return x;
-    }
-  }));
+  const [guessBox, setGuessBox] = useState('');
   const [strikes, setStrikes] = useState(0);
+
+  useEffect(() => {
+    const regex = /[a-zA-Z]/; //test if a part of the title is a letter
+    setGuessBox(props.title.split('').map(x => {
+      if (regex.test(x)) {
+        return '-';
+      } else {
+        return x;
+      }
+    }))
+  }, [props.title])
 
   /* 
   letter is selected
