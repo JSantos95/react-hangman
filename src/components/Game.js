@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import Title from './Title';
 import Letters from './Letters';
-import Man from './Man';
 import getTitles from '../api/getTitles';
 
 const Game = () => {
 
-    const [movieTitles, setMovieTitles] = useState([]);
+    const [movieTitle, setMovieTitle] = useState('');
 
-    useEffect(() => {
-        getTitles().then((results) => {
-        setMovieTitles(results);
+    useEffect(() => { 
+        getTitles().then(({ results }) => {
+            let size = results.length;
+            let rand = Math.floor(Math.random() * size);
+            setMovieTitle(results[rand].title);
         })
-    }, [])
+    }, []) 
 
-    return(
+    return (
         <div>
-            <Title />
-            <Letters />
-            <Man />
+            <Title title={movieTitle} />
+            <Letters title={movieTitle} />
         </div>
     )
 }
 
-export default Game
+export default Game;
