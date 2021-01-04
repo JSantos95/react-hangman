@@ -11,7 +11,7 @@ const Game = () => {
         getTitles().then(({ results }) => {
             let size = results.length;
             let rand = Math.floor(Math.random() * size);
-            setMovieTitle(results[rand].title);
+            setMovieTitle(results[rand].title.toUpperCase());
         })
     }, []) 
 
