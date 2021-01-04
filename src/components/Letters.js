@@ -1,22 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Man from './Man';
 
 const Letters = (props) => {
 
-  const [guess, setGuess] = useState([]); 
-  const [titleBox, setTitleBox] = useState(props.title.split('').filter(x => x === " "));
+  const regex = /[a-zA-Z]/; //will be use to test if a part of the title is a letter
 
-  useEffect(() => {
+  const [guessBox, setGuessBox] = useState(props.title.split('').map(x => {
+    if (regex.test(x)) {
+      return '-';
+    } else {
+      return x;
+    }
+  })); 
+  // eslint-disable-next-line
+  const [titleBox, setTitleBox] = useState(props.title.split(''));
+  const [strikes, setStrikes] = useState(0);
 
-  }, [guess])
-
-
+  /* 
+  letter is selected
+  if the title has this letter and it hasn't been guessed yet
+   add it to guessBox at the correct index(s)
+  if not then add a strike to Hangman 
+  */
+  const onChange = (e) => { 
+    let letter = e.target.value;
+    if (titleBox.includes(letter) && !guessBox.includes(letter)) { 
+      let tempBox = [...guessBox];
+      for(let i = 0; i < titleBox.length; i++){
+        if(titleBox[i] === letter){
+          tempBox[i] = letter;
+        }
+      }
+      setGuessBox(tempBox);
+    } else {
+      setStrikes(prevState => prevState + 1);
+    }
+  }
   
   return (
     <div>
+      <h2>Guess: {guessBox}</h2>
       <form>
-        <label htmlFor="letter">Take A Guess:</label>
-        <select>
+        <label htmlFor="letter">Take A Guess: </label>
+        <select onChange={onChange}>
           <option>--</option>
           <option name="letter" value="A">A</option>
           <option name="letter" value="B">B</option>
@@ -46,7 +72,7 @@ const Letters = (props) => {
           <option name="letter" value="Z">Z</option>
         </select>
       </form>
-      <Man />
+      <Man strikes={strikes} />
     </div>
   )
 }
