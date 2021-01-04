@@ -4,6 +4,7 @@ import Man from './Man';
 const Letters = (props) => {
 
   const regex = /[a-zA-Z]/; //will be use to test if a part of the title is a letter
+  const titleBox = props.title.split(''); //title split by every index
 
   const [guessBox, setGuessBox] = useState(props.title.split('').map(x => {
     if (regex.test(x)) {
@@ -11,9 +12,7 @@ const Letters = (props) => {
     } else {
       return x;
     }
-  })); 
-  // eslint-disable-next-line
-  const [titleBox, setTitleBox] = useState(props.title.split(''));
+  }));
   const [strikes, setStrikes] = useState(0);
 
   /* 
