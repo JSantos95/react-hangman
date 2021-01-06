@@ -31,9 +31,9 @@ const Man = (props) => {
   }, [props.strikes])
 
   return (
-      <div>
-        <p>Guesses Left: {props.strikes} / 6 </p> 
-        <img src={`/img/${phase}.png`} alt="Hangman" width='500' height='500' />
+      <div className="man">
+        <p className="man__strikes">Guesses Left: {props.strikes} / 6 </p> 
+        <img className="man__hangman" src={`/img/${phase}.png`} alt="Hangman" width='420' height='420' />
       </div>
   )
 }
