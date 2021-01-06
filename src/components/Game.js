@@ -3,7 +3,7 @@ import Title from './Title';
 import Letters from './Letters';
 import getTitles from '../api/getTitles';
 
-const Game = () => {
+const Game = (props) => {
 
     const [movieTitle, setMovieTitle] = useState('');
     const [gameState, setGameState] = useState('Play'); // won or game over ??
@@ -20,7 +20,7 @@ const Game = () => {
         <div>
             {gameState === 'Play' ? 
                 <Letters title={movieTitle} gameState={gameState} setGameState={setGameState} /> : 
-                <Title title={movieTitle} status={gameState} /> 
+                <Title title={movieTitle} status={gameState} setStart={props.setStart} /> 
             }
         </div>
     )

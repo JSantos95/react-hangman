@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <h1>Hangman Movie Title Game!</h1>
       {gameStart?  
-        <Game /> :
+        <Game setStart={setStart} /> :
         <button onClick={() => setStart(true)}>Start Game</button>
       }
       
