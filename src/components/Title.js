@@ -1,9 +1,12 @@
 import React from 'react';
 
 const Title = (props) => {
-  return(
+  return (
     <div>
-      <h3>{props.text}</h3>
+      {props.status === 'Winner!' ?
+        <h1>{props.status} {props.title} Was The Correct Movie Title</h1> :
+        <h1>{props.status}, {props.title} Was The Correct Movie Title</h1> 
+      }
     </div>
   )
 }
