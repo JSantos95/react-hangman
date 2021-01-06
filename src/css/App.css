@@ -1,3 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  --main-color: #48E5C2;
+  --main-color-white: #FCFAF9;
+  --main-color-black: #333333;
+  --main-color-grey: #5E5E5E;
+  --main-color-tan: #F3D3BD;
+}
+
 .App {
+  height: 100vh;
   text-align: center;
+  background-color: #48E5C2;
+  color: var(--main-color-black);
+}
+
+/* */
+.App__header {
+  font-family: 'Bevan', cursive;
+  font-size: 6rem;
+  padding: 5rem 0;
+}
+
+.App__header--sub {
+  font-family: 'Limelight', cursive;
+}
+
+.btn {
+  font-size: 2rem;
+  font-weight: bolder;
+  padding: 3rem 4rem;
+  color: var(--main-color-black);
+  border: #FCFAF9;
+  border-radius: 200px;
+}
+
+.Letter {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  font-size: 4.5rem;
+}
+
+.Letter__guess {
+  font-size: 5.5rem;
+}
+
+.title {
+  font-size: 4.5rem;
+}
+
+.title__header {
+  padding: 3rem 0 5rem 0;
 }
