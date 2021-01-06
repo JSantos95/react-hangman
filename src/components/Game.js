@@ -6,6 +6,7 @@ import getTitles from '../api/getTitles';
 const Game = () => {
 
     const [movieTitle, setMovieTitle] = useState('');
+    const [gameState, setGameState] = useState('Play'); // won or game over ??
 
     useEffect(() => { 
         getTitles().then(({ results }) => {
@@ -17,8 +18,10 @@ const Game = () => {
 
     return (
         <div>
-            <Title title={movieTitle} />
-            <Letters title={movieTitle} />
+            {gameState === 'Play' ? 
+                <Letters title={movieTitle} gameState={gameState} setGameState={setGameState} /> : 
+                <Title title={movieTitle} status={gameState} /> 
+            }
         </div>
     )
 }
