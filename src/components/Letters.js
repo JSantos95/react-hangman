@@ -18,12 +18,8 @@ const Letters = ({ title, setGameState }) => {
     }))
   }, [title])
 
-  // checks if the game is won or lost when guessBox or Stirke updates
+  // checks if the game is won or lost when guessBox or stirke updates
   useEffect(() => {
-    console.log("useEffect winner")
-    console.log(guessBox);
-    console.log(titleBox)
-    console.log(guessBox === titleBox);
     if (guessBox.join() === titleBox.join()) {
       setGameState('Winner!');
     }
@@ -59,7 +55,6 @@ const Letters = ({ title, setGameState }) => {
   
   return (
     <div>
-      <h2>Title: {title}</h2>
       <h2>Guess: {guessBox}</h2>
       <form>
         <label htmlFor="letter">Take A Guess: </label>
