@@ -1,29 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import Man from './Man';
 
-const Letters = (props) => {
+const Letters = ({ title, setGameState }) => {
 
-  const titleBox = props.title.split('');
-
+  const titleBox = title.split('');
   const [guessBox, setGuessBox] = useState('');
   const [strikes, setStrikes] = useState(0);
 
   useEffect(() => {
     const regex = /[a-zA-Z]/; //test if a part of the title is a letter
-    setGuessBox(props.title.split('').map(x => {
+    setGuessBox(title.split('').map(x => {
       if (regex.test(x)) {
         return '-';
       } else {
         return x;
       }
     }))
-  }, [props.title])
+  }, [title])
+
+  // checks if the game is won or lost when guessBox or Stirke updates
+  useEffect(() => {
+    console.log("useEffect winner")
+    console.log(guessBox);
+    console.log(titleBox)
+    console.log(guessBox === titleBox);
+    if (guessBox.join() === titleBox.join()) {
+      setGameState('Winner!');
+    }
+  }, [guessBox, titleBox])
+  useEffect(() => {
+    console.log("useEffect strikes")
+    if (strikes === 6) {
+      setGameState('Game Over');
+    }
+  }, [strikes])
 
   /* 
   letter is selected
   if the title has this letter and it hasn't been guessed yet
    add it to guessBox at the correct index(s)
-  if not then add a strike to Hangman 
+   check if the whole title is guessed
+  if not then add a strike to Hangman and check if game over 
   */
   const onChange = (e) => { 
     let letter = e.target.value;
@@ -42,6 +59,7 @@ const Letters = (props) => {
   
   return (
     <div>
+      <h2>Title: {title}</h2>
       <h2>Guess: {guessBox}</h2>
       <form>
         <label htmlFor="letter">Take A Guess: </label>
