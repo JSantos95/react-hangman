@@ -6,12 +6,13 @@ const Letters = ({ title, setGameState }) => {
   const titleBox = title.split('');
   const [guessBox, setGuessBox] = useState([]);
   const [strikes, setStrikes] = useState(0);
+  const [misses, setMisses] = useState([]);
 
   useEffect(() => {
     const regex = /[a-zA-Z]/; //test if a part of the title is a letter
     setGuessBox(title.split('').map(x => {
       if (regex.test(x)) {
-        return '-';
+        return '_';
       } else {
         return x;
       }
@@ -49,16 +50,17 @@ const Letters = ({ title, setGameState }) => {
       }
       setGuessBox(tempBox);
     } else {
+      setMisses([...misses, letter]);
       setStrikes(prevState => prevState + 1);
     }
   }
   
   return (
-    <div className="Letter"> 
-      <div className="Letter__guess">
-        <h2 className="Letter__header">Guess: {guessBox}</h2>
+    <div className="letter"> 
+      <div className="letter__guess">
+        <h2>Guess: <span className="letter__guess--header">{guessBox}</span></h2>
         <form>
-          <label className="Letter__label" htmlFor="letter">Take A Guess: </label>
+          <label className="letter__label" htmlFor="letter">Guess A Letter: </label>
           <select onChange={onChange}>
             <option>--</option>
             <option name="letter" value="A">A</option>
@@ -89,6 +91,10 @@ const Letters = ({ title, setGameState }) => {
             <option name="letter" value="Z">Z</option>
           </select>
         </form>
+        <h2 className="letter__header">Incorrent Letters: </h2>
+        <div className="letter__miss">
+          { misses }
+        </div>
       </div>
       <Man strikes={strikes} />
     </div>
