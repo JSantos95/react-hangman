@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import BigGuess from './BigGuess';
 import Man from './Man';
+
 
 const Letters = ({ title, setGameState }) => {
 
-  const titleBox = title.split('');
+  const titleBox = title.toUpperCase().split('');
   const [guessBox, setGuessBox] = useState([]);
   const [strikes, setStrikes] = useState(0);
   const [misses, setMisses] = useState([]);
 
   useEffect(() => {
     const regex = /[a-zA-Z]/; //test if a part of the title is a letter
-    setGuessBox(title.split('').map(x => {
+    setGuessBox(title.toUpperCase().split('').map(x => {
       if (regex.test(x)) {
         return '_';
       } else {
@@ -91,6 +93,7 @@ const Letters = ({ title, setGameState }) => {
             <option name="letter" value="Z">Z</option>
           </select>
         </form>
+        <BigGuess title={title} setGuessBox={setGuessBox} setStrikes={setStrikes} />
         <h2 className="letter__header">Incorrent Letters: </h2>
         <div className="letter__miss">
           { misses }
