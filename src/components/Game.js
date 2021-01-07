@@ -19,7 +19,7 @@ const Game = (props) => {
     return (
         <div>
             {gameState === 'Play' ? 
-                <Letters title={movieTitle.toUpperCase()} gameState={gameState} setGameState={setGameState} /> : 
+                <Letters title={movieTitle} gameState={gameState} setGameState={setGameState} /> : 
                 <Title title={movieTitle} status={gameState} setStart={props.setStart} /> 
             }
         </div>
