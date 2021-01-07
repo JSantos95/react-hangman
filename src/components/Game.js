@@ -12,14 +12,14 @@ const Game = (props) => {
         getTitles().then(({ results }) => {
             let size = results.length;
             let rand = Math.floor(Math.random() * size);
-            setMovieTitle(results[rand].title.toUpperCase());
+            setMovieTitle(results[rand].title);
         })
     }, []) 
 
     return (
         <div>
             {gameState === 'Play' ? 
-                <Letters title={movieTitle} gameState={gameState} setGameState={setGameState} /> : 
+                <Letters title={movieTitle.toUpperCase()} gameState={gameState} setGameState={setGameState} /> : 
                 <Title title={movieTitle} status={gameState} setStart={props.setStart} /> 
             }
         </div>
