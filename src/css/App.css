@@ -38,15 +38,36 @@
   border-radius: 200px;
 }
 
-.Letter {
+.letter {
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
   font-size: 4.5rem;
 }
 
-.Letter__guess {
+.letter__guess {
   font-size: 5.5rem;
+}
+
+.letter__guess--header {
+  letter-spacing: .8rem;
+}
+
+.letter__header {
+  margin-top: 3rem;
+}
+
+.letter__miss {
+  margin: .5rem auto 3rem auto;
+  border: solid;
+  height: 10rem;
+  width: 40rem;
+  letter-spacing: 1rem;
+}
+
+.man__strikes {
+  margin-top: .5rem;
+  font-size: 2rem;
 }
 
 .title {
@@ -55,4 +76,10 @@
 
 .title__header {
   padding: 3rem 0 5rem 0;
+}
+
+.title__header--sub {
+  font-size: 3.5rem;
+  font-weight: bolder;
+  font-style: italic;
 }
