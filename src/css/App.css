@@ -9,6 +9,8 @@
   --main-color-black: #333333;
   --main-color-grey: #5E5E5E;
   --main-color-tan: #F3D3BD;
+
+  --smaller-text: 4rem;
 }
 
 .App {
@@ -53,6 +55,10 @@
   letter-spacing: .8rem;
 }
 
+.letter__label {
+  font-size: 2.9rem;
+}
+
 .letter__header {
   margin-top: 3rem;
 }
@@ -67,7 +73,7 @@
 
 .man__strikes {
   margin-top: .5rem;
-  font-size: 2rem;
+  font-size: var(--smaller-text);
 }
 
 .title {
@@ -82,4 +88,12 @@
   font-size: 3.5rem;
   font-weight: bolder;
   font-style: italic;
+}
+
+.bigGuess {
+  font-size: var(--smaller-text);
+}
+
+.bigGuess__submit {
+  margin-left: 1rem;
 }
