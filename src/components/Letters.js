@@ -61,9 +61,9 @@ const Letters = ({ title, setGameState }) => {
     <div className="letter"> 
       <div className="letter__guess">
         <h2>Guess: <span className="letter__guess--header">{guessBox}</span></h2>
-        <form>
+        <form className="letter__form">
           <label className="letter__label" htmlFor="letter">Guess A Letter: </label>
-          <select onChange={onChange}>
+          <select className="letter__select" onChange={onChange}>
             <option>--</option>
             <option name="letter" value="A">A</option>
             <option name="letter" value="B">B</option>
