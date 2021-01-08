@@ -19,10 +19,10 @@ const BigGuess = ({title, setGuessBox, setStrikes}) => {
     }
 
     return (
-        <form className="bigGuess"  onSubmit={onSubmit} >
+        <form className="bigGuess" onSubmit={onSubmit}>
             <label className="bigGuess__label" htmlFor="bigGuess">Guess The Whole Title: </label>
             <input className="bigGuess__input" type="text" name="bigGuess" value={guessTitle} onChange={onChange} placeholder="Don't Forget Puncuation!"></input>
-            <input className="bigGuess__submit btn" type="submit" value="Guess"></input>
+            <input className="bigGuess__submit" type="submit" value="Guess"></input>
         </form>
     )
 }
